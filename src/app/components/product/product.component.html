@@ -1,0 +1,16 @@
+<div class="border rounded w-full h-full  my-5 py-5 px-5 py-5 flex items-center justify-center flex-col    ">
+<img *ngIf="!detailState" [src]="product.image" alt="product" class=" w-1/5 ">    
+<h2 class = 'mt-1' rounded >{{product.title}}</h2>
+<p *ngIf="detailState" >{{product.description}}</p>
+<button 
+    class="border rounded py-1 px-3 my-2"
+    (click)="detailState = !detailState"
+    [ngClass]="{
+        'bg-yellow-200': !detailState,
+        'bg-gray-200': detailState
+    }"
+>{{detailState? 'Hide' : 'Show info'}}</button>
+
+<p >Price: <span class="font-medium">{{product.price | currency}}</span> </p>
+</div>
+
