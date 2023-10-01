@@ -3,14 +3,18 @@ import { Iproduct } from './components/models/Iproduct';
 import { ProductService } from './services/products.service';
 import { Observable, tap } from 'rxjs';
 import { Call } from '@angular/compiler';
- 
+import {ErrorService} from "./services/error.service";
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor (private productService:ProductService){
+  constructor (
+    private productService:ProductService,
+
+){
 
   }
 
@@ -23,10 +27,10 @@ export class AppComponent implements OnInit {
     this.products$ = this.productService.getAll().pipe(
       tap(()=>{
         this.loading=false
-      })
+      }),
+
     )
     }
-    
+
   }
-  
- 
+
